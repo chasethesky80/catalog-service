@@ -40,10 +40,9 @@ public class BookService {
     }
 
     public Book editBookDetails(final String isbn, final Book book){
-        final Book existingBook = bookRepository.findByIsbn(isbn).orElseThrow(
-                () -> new BookNotFoundException(isbn));
-        final Book bookToSave = new Book(existingBook.isbn(), book.title(),
-                book.author(), book.price());
-       return bookRepository.save(bookToSave);
+        return bookRepository.findByIsbn(isbn).map(existingBook -> {
+            final Book bookToSave = new Book(isbn, book.title(), book.author(), book.price());
+            return bookRepository.save(bookToSave);
+          }).orElseGet(() -> addBookToCatalog(book));
     }
 }
