@@ -1,6 +1,7 @@
 package com.polarbookshop.catalogservice.repository.impl;
 
 import com.polarbookshop.catalogservice.domain.Book;
+import com.polarbookshop.catalogservice.exception.BookNotFoundException;
 import com.polarbookshop.catalogservice.repository.BookRepository;
 import org.springframework.stereotype.Repository;
 
@@ -32,5 +33,10 @@ public class InMemoryBookRepository implements BookRepository {
     public Book save(final Book book) {
         books.put(book.isbn(), book);
         return book;
+    }
+
+    @Override
+    public void deleteByIsbn(final String isbn) {
+        books.remove(isbn);
     }
 }

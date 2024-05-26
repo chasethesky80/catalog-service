@@ -9,4 +9,5 @@ public interface BookRepository {
     Optional<Book> findByIsbn(final String isbn);
     boolean existsByIsbn(final String isbn);
     Book save(final Book book);
+    void deleteByIsbn(final String isbn);
 }
