@@ -1,7 +1,6 @@
 package com.polarbookshop.catalogservice.repository.impl;
 
 import com.polarbookshop.catalogservice.domain.Book;
-import com.polarbookshop.catalogservice.exception.BookNotFoundException;
 import com.polarbookshop.catalogservice.repository.BookRepository;
 import org.springframework.stereotype.Repository;
 
