@@ -24,7 +24,7 @@ public class BookServiceTest {
     @Test
     void whenBookToCreateAlreadyExistsThenThrowException() {
         var bookIsbn = "1234561232";
-        var bookToCreate = new Book(bookIsbn, "title", "author", 9.90);
+        var bookToCreate = new Book(1L, bookIsbn, "title", "author", 9.90, null, null, 0);
         when(bookRepository.existsByIsbn(bookIsbn)).thenReturn(true);
         assertThatThrownBy(() -> bookService.addBookToCatalog(bookToCreate))
                 .isInstanceOf(BookAlreadyExistsException.class)
