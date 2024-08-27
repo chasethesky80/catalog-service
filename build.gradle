@@ -45,14 +45,17 @@ bootRun {
 
 ext {
 	set('springCloudVersion', "2022.0.3")
+	set('testcontainersversion', "1.17.3")
 }
 
 dependencies {
 	implementation 'org.springframework.cloud:spring-cloud-starter-config'
+	testImplementation 'org.testcontainers:postgresql'
 }
 
 dependencyManagement {
 	imports {
 		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+		mavenBom "org.testcontainers: testcontainers-bom:${testcontainersVersion}"
 	}
 }
