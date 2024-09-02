@@ -44,6 +44,7 @@ public class BookService {
             var bookToSave = new Book(existingBook.id(), existingBook.isbn(),
                     book.title(), book.author(), book.price(), existingBook.createdDate(),
                     existingBook.lastModifiedDate(),
+                    existingBook.publisher(),
                     existingBook.version());
             return bookRepository.save(bookToSave);
           }).orElseGet(() -> addBookToCatalog(book));
