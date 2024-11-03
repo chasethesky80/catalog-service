@@ -60,3 +60,8 @@ dependencyManagement {
 		mavenBom "org.testcontainers:testcontainers-bom:${testcontainersversion}"
 	}
 }
+
+bootBuildImage {
+	imageName = "${project.name}"
+	environment = ["BP_JVM_VERSION": "17.*"]
+}
