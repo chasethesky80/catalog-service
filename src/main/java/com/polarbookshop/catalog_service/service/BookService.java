@@ -37,4 +37,8 @@ public class BookService {
        var bookToSave = new Book(isbn, book.title(), book.author(), book.price());
        return bookRepository.save(bookToSave);
    }
+
+   public void removeBookFromCatalog(String isbn) {
+       bookRepository.deleteByIsbn(isbn);
+   }
 }

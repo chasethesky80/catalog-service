@@ -3,7 +3,6 @@ package com.polarbookshop.catalog_service.repository;
 import com.polarbookshop.catalog_service.domain.Book;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
@@ -31,5 +30,10 @@ public class InMemoryRepository implements BookRepository {
     public Book save(Book book) {
         books.put(book.isbn(), book);
         return book;
+    }
+
+    @Override
+    public void deleteByIsbn(String isbn) {
+        books.remove(isbn);
     }
 }
