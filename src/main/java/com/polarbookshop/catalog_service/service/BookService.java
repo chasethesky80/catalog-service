@@ -34,7 +34,8 @@ public class BookService {
    public Book editBookDetails(String isbn, Book book) {
        final Book bookToEdit = bookRepository.findByIsbn(isbn).orElseGet(
                () -> addBookToCatalog(book));
-       var bookToSave = new Book(isbn, book.title(), book.author(), book.price());
+       var bookToSave = new Book(bookToEdit.id(), isbn, book.title(), book.author(),
+               book.price(), bookToEdit.version());
        return bookRepository.save(bookToSave);
    }
 
